@@ -21,7 +21,7 @@ function isInvalidInput(str){
 function addEntry(){
   const targetId = entryDropdown.value;  
   const targetInputContainer = document.querySelector(`#${entryDropdown.value} .input-container`);
-  const entryNumber = targetInputContainer.querySelectorAll("input[type='string']").length;
+  const entryNumber = targetInputContainer.querySelectorAll("input[type='text']").length + 1;
   const HTMLString  = `
     <label for = "${entryDropdown.value}-${entryNumber}-name">
         Entry ${entryNumber} Name
@@ -29,7 +29,17 @@ function addEntry(){
     <input type="text" placeholder="name" id="${entryDropdown.value}-${entryNumber}-name">
 
     <label for = "${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
-    <input type="number" placeholder="calories" id="${entryDropdown.value}-${entryNumber}-calories">
+    <input type = "number" min = "0" placeholder="calories" id="${entryDropdown.value}-${entryNumber}-calories">
 
   `;
+
+  targetInputContainer.insertAdjacentHTML("beforeend", HTMLString);
+
 }
+
+function getCaloriesFromInputs (list){
+
+}
+
+addEntryButton.addEventListener("click", addEntry);
+
